@@ -19,7 +19,7 @@ class MediaFixtures extends Fixture
         for ($i = 0; $i < 50; $i++) {
             $media = $this->createMedia();
 
-            $media->setMediaType(MediaTypeEnum::PUBLISHED);
+            // $media->setMediaType(MediaTypeEnum::PUBLISHED);
             $media->setTitle($faker->sentence(1));
             $media->setShortDescription($faker->sentence(10));
             $media->setLongDescription($faker->paragraphs(1, true));

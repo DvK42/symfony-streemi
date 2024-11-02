@@ -1,0 +1,33 @@
+App\Entity\Media: 
+  media (template):
+    shortDescription: 'Des mecs en bleu'
+    longDescription: 'Une guerre de zinzin sur une platete de vegans'
+    releaseDate: "<dateTimeBetween('-1 week', '+1 week')>"
+    coverImage: 'https://picsum.photos/300/400?random=1'
+    categorie: 
+      - '@categorie_action'
+      - '@categorie_aventure'
+
+    language: 
+      - '@lang_fr'
+      - '@lang_en'
+
+App\Entity\Movie:
+  movie{1..50} (extends media):
+    title: 'Avatar <current()>'
+
+App\Entity\Serie:
+  serie{1..50} (extends media):
+    title: 'Serie <current()> - <name()>'
+
+App\Entity\Season: 
+  season{1..50}: 
+    seasonNumber: <numberBetween(1, 10)>
+    serie: '@serie*'
+
+App\Entity\Episode:
+  episode{1..100}: 
+    title: '<name()>'
+    duration: '<numberBetween(30, 120)>'
+    releaseDate: "<dateTimeBetween('-1 week', '+1 week')>"
+    season: '@season*'
