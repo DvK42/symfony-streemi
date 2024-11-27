@@ -15,6 +15,7 @@ class UserFixtures extends Fixture implements OrderedFixtureInterface
         $user->setEmail('guillaume.couvidou@live.fr');
         $user->setUsername('guicouvi');
         $user->setPassword('esgi');
+        $user->setRoles(['ROLE_USER']);
         $manager->persist($user);
 
         $manager->flush();
