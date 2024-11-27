@@ -40,4 +40,14 @@ class MediaRepository extends ServiceEntityRepository
     //            ->getOneOrNullResult()
     //        ;
     //    }
+
+    public function findPopular(int $maxResults) {
+        return $this->createQueryBuilder('m')
+            ->leftJoin('m.watchHistories', 'wh')
+            ->groupBy('m.id')
+            ->orderBy('COUNT(wh)', 'DESC')
+            ->setMaxResults($maxResults)
+            ->getQuery()
+            ->getResult();
+    }
 }

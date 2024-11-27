@@ -2,17 +2,12 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\Media;
-use App\Entity\Movie;
-use App\Entity\Playlist;
-use App\Entity\Subscription;
 use App\Entity\User;
-use App\Enum\MediaTypeEnum;
-use DateTime;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 
-class UserFixtures extends Fixture
+class UserFixtures extends Fixture implements OrderedFixtureInterface
 {
     public function load(ObjectManager $manager): void
     {
@@ -23,5 +18,10 @@ class UserFixtures extends Fixture
         $manager->persist($user);
 
         $manager->flush();
+    }
+
+    public function getOrder(): int
+    {
+        return 1; // Chargée en premier
     }
 }

@@ -5,9 +5,10 @@ namespace App\DataFixtures;
 use App\Entity\Categorie;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Faker\Factory;
 
-class CategorieFixtures extends Fixture
+class CategorieFixtures extends Fixture implements OrderedFixtureInterface
 {
     public function load(ObjectManager $manager): void
     {
@@ -23,5 +24,10 @@ class CategorieFixtures extends Fixture
         }
 
         $manager->flush();
+    }
+
+    public function getOrder(): int
+    {
+        return 3;
     }
 }

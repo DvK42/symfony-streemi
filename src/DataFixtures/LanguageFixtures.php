@@ -4,10 +4,12 @@ namespace App\DataFixtures;
 
 use App\Entity\Language;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
+
 use Faker\Factory;
 
-class LanguageFixtures extends Fixture
+class LanguageFixtures extends Fixture implements OrderedFixtureInterface
 {
     public function load(ObjectManager $manager): void
     {
@@ -26,5 +28,9 @@ class LanguageFixtures extends Fixture
         }
 
         $manager->flush();
+    }
+    public function getOrder(): int
+    {
+        return 4;
     }
 }
