@@ -9,19 +9,41 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class SecurityController extends AbstractController
 {
-    #[Route(path: '/login', name: 'app_login')]
-    public function login(AuthenticationUtils $authenticationUtils): Response
+    #[Route(path: '/login', name: 'page_login')]
+    public function login(AuthenticationUtils $authenticationUtils)
     {
-        // get the login error if there is one
-        $error = $authenticationUtils->getLastAuthenticationError();
+      $error = $authenticationUtils->getLastAuthenticationError();
 
-        // last username entered by the user
-        $lastUsername = $authenticationUtils->getLastUsername();
+      $lastUsername = $authenticationUtils->getLastUsername();
 
-        return $this->render('security/login.html.twig', [
-            'last_username' => $lastUsername,
-            'error' => $error,
-        ]);
+      return $this->render('auth/login.html.twig', [
+         'last_username' => $lastUsername,
+         'error' => $error,
+      ]);
+    }
+
+    #[Route(path: '/register', name: 'page_register')]
+    public function register()
+    {
+       return $this->render(view: 'auth/register.html.twig');
+    }
+
+    #[Route(path: '/forgot', name: 'page_forgot')]
+    public function forgot()
+    {
+       return $this->render(view: 'auth/forgot.html.twig');
+    }
+
+    #[Route(path: '/confirm', name: 'page_confirm')]
+    public function confirm()
+    {
+       return $this->render(view: 'auth/confirm.html.twig');
+    }
+
+    #[Route(path: '/reset', name: 'page_reset')]
+    public function reset()
+    {
+       return $this->render(view: 'auth/reset.html.twig');
     }
 
     #[Route(path: '/logout', name: 'app_logout')]
