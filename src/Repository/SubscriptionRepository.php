@@ -31,11 +31,11 @@ class SubscriptionRepository extends ServiceEntityRepository
     //        ;
     //    }
 
-    //    public function findOneBySomeField($value): ?Subscription
+    //    public function findSubscriptionForUser($user_id): ?Subscription
     //    {
     //        return $this->createQueryBuilder('s')
-    //            ->andWhere('s.exampleField = :val')
-    //            ->setParameter('val', $value)
+    //            ->andWhere('s.userId = :val')
+    //            ->setParameter('val', $user_id)
     //            ->getQuery()
     //            ->getOneOrNullResult()
     //        ;

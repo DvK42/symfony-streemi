@@ -31,13 +31,14 @@ class SubscriptionHistoryRepository extends ServiceEntityRepository
     //        ;
     //    }
 
-    //    public function findOneBySomeField($value): ?SubscriptionHistory
+    // public function findSubscriptionForUser($user_id): ?SubscriptionHistory
     //    {
     //        return $this->createQueryBuilder('s')
-    //            ->andWhere('s.exampleField = :val')
-    //            ->setParameter('val', $value)
+    //            ->andWhere('s.user = :val')
+    //            ->setParameter('val', $user_id)
     //            ->getQuery()
     //            ->getOneOrNullResult()
     //        ;
     //    }
+    // }
 }
