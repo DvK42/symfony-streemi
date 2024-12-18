@@ -1,0 +1,26 @@
+services:
+  db:
+    image: mariadb:10.4
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: streami
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - streami
+
+  php:
+    build:
+      context: ./.devops/php
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/srv
+    networks:
+      - streami
+
+volumes:
+  db_data:
+
+networks:
+  streami:
